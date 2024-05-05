@@ -1,15 +1,11 @@
 from fastapi import FastAPI
-import uvicorn
 from pydantic import BaseModel
 from typing import Literal
-#import os
-#import sys
+import uvicorn
 
 from pyspark.sql import SparkSession
-
 from pyspark.sql import functions as f
 from pyspark.sql.types import StringType
-
 from pyspark.ml.regression import RandomForestRegressionModel
 from pyspark.ml import PipelineModel
 
@@ -24,7 +20,6 @@ class ModelPayload(BaseModel):
     condo: float
 
 spark = SparkSession.builder.master('local[*]').getOrCreate()
-
 
 loaded_pipeline = PipelineModel.load('pipeline_fitted')
 loaded_model = RandomForestRegressionModel.load('rf_fitted')
@@ -55,6 +50,8 @@ async def predict(payload: ModelPayload):
   inv_pred = pred.withColumn('prediction', (f.exp(pred['prediction']) - 1).alias('inv_prediction'))
 
   y = round(inv_pred.collect()[0][2], 0)
+
+  spark.stop()
 
   return y
 
