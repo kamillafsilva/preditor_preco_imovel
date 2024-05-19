@@ -9,4 +9,4 @@ Esse projeto foi desenvolvido durante o curso de [Regressão com Spark da Alura]
 </p>
 
 ## Implementação
-O código completo do projeto está disponível neste notebook do Colab: [preditor_preco_imovel](https://colab.research.google.com/drive/1CBzaoxBT_5yM_V70iPJcNE_X4lpT4giC?usp=sharing).
+O código completo do projeto está disponível neste notebook do Colab: [preditor_preco_imovel](https://colab.research.google.com/drive/1lRmU1rikSBklCMxb4nz8amrKueWTt-Mu?usp=sharing).
